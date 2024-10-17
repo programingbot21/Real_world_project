@@ -1,5 +1,7 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink,Link} from 'react-router-dom'
+// import { GrUserWorker } from "react-icons/gr";
+
 const Header = () => {
   return (
    <>
@@ -9,17 +11,30 @@ const Header = () => {
       <span className="navbar-toggler-icon" />
     </button>
     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <NavLink to="/" className="navbar-brand" href="#">Hidden brand</NavLink >
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-          <NavLink to="/" className="nav-link active" aria-current="page" href="#">Home</NavLink >
+      <Link to="/" className="navbar-brand" > 
+
+        🧑‍🏭 Search Worker</Link >
+      <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li className="nav-item active">
+          <NavLink to="/" className="nav-link "  >
+            Home</NavLink >
         </li>
-        <li className="nav-item">
-          <NavLink to="/"  className="nav-link" href="#">Link</NavLink >
+        <li className="nav-item active">
+          <NavLink to="/category" className="nav-link " >
+            Category</NavLink >
         </li>
-        <li className="nav-item">
-          <NavLink to="/" className="nav-link disabled" aria-disabled="true">Disabled</NavLink >
+        <li className="nav-item active">
+          <NavLink to="/register"  className="nav-link" href="">Register</NavLink >
         </li>
+        <li className="nav-item active ">
+          <NavLink to="/Log-in"  className="nav-link" 
+          href="#">Log-in</NavLink >
+        </li>
+        <li className="nav-item active">
+          <NavLink to="/cart"  className="nav-link" 
+          href="#">Cart(0)</NavLink >
+        </li>
+        
       </ul>
       
       
@@ -32,3 +47,4 @@ const Header = () => {
 }
 
 export default Header
+

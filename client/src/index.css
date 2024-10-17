@@ -7,3 +7,113 @@
 
  /* font-family: "Playfair", serif;
  font-family: "Rozha One", serif; */
+
+ /* navbar css */
+
+ .navbar{
+     font-family: "Playfair", serif;
+     font-size: 21px;
+     line-height: 26px;
+     text-transform: uppercase;
+     box-shadow: 0 8px 6px -6px rgb(128, 128, 128);
+     --webkit-box-shadow: 0 8px 6px -6px rgb(128, 128, 128);
+     border-bottom: solid gray !important;
+ }
+ .nav-link{
+  font-weight: 300px !important;
+  
+ }
+
+ .active:hover{
+  border-bottom: 2px solid black;
+  
+  transform: rotate(150deg);
+ 
+ }
+
+ .navbar-brand{
+  font-weight: 700;
+  font-family: "roboto", sans-serif;
+  letter-spacing: 1.8px;
+  
+ }
+
+ /* ====footer==== */
+
+ .Footer{
+  color: white;
+  padding: 25px;
+  background: -webkit-linear-gradient(to right,  #434343, #000000);
+  background: linear-gradient( to right, #434343,  #000000);
+ }
+
+ .Footer a{
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+ }
+ .Footer a:hover{
+   color: #ffefba;
+   border-bottom: 1px solid  #ffefba;
+ }
+
+ /* ====PAge not Found===== */
+
+ .pnf {
+  display: flex;
+  min-height: 65vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pnf-title {
+  font-size: 100px;
+  font-weight: 700;
+}
+
+.pnf-heading {
+  font-weight: normal;
+}
+
+.pnf-btn {
+  color: black;
+  border: 1px solid black;
+  text-decoration: none;
+  padding: 10px;
+  margin-top: 10px;
+}
+.pnf-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+ /* ====Contact==== */
+ .row {
+  margin: 0;
+  padding: 0;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.row .contactus{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* ==================== */
+.product-link {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+.cat-btn {
+  padding: 40px 0px;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.cat-btn:hover {
+  background-color: #434343;
+  color: white;
+}
