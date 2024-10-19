@@ -3,7 +3,7 @@ import Layout from '../componet/layout/layout'
 
 const Policy = () => {
   return (
-    <Layout>
+    <Layout title={"Check Policy"}>
       <h1> Policy</h1>
         </Layout>
   )

@@ -3,7 +3,7 @@ import Layout from '../componet/layout/layout'
 
 function About() {
   return (
-    <Layout>
+    <Layout title={"About us -Search worker"}>
         <h1>About</h1>
         </Layout>
   )
