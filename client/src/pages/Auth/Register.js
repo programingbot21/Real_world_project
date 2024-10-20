@@ -2,7 +2,10 @@ import React,{useState} from 'react'
 import Layout from '../../componet/layout/layout'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
-import { toast } from 'react-toastify'
+import toast from 'react-hot-toast';
+import "../../styles/AuthStyles.css";
+
+
 
 
 const Register = () => {
@@ -10,7 +13,7 @@ const Register = () => {
     const [email , setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [phone , setPhone] = useState("");
-    const [Address , setAddresh] = useState("");
+    // const [Address , setAddresh] = useState("");
     const navigate = useNavigate();
 
 
@@ -21,25 +24,27 @@ const Register = () => {
             {name,
             email, 
             password, 
-            phone, 
-            Address});
-            if(res.data.success){
-                toast.success(res.data.message)
-                navigate('/login');
+            phone
+            // Address
+          });
+            if(res && res.data.success){
+                toast.success( res.data &&  res.data.message)
+                navigate("/login");
             }else{
               toast.error(res.data.message)  
             }
         } catch (error) {
             console.log(error)
-            toast.error('Something went wrong')
+            toast.error("Something went wrong")
         }
     }
 
   return (
     <Layout title={"Register Worker-app"}>
-    <div className='register'>
-        <h1>Register Page</h1>
+    <div className='form-container'  style={{ minHeight: "90vh"}}>
+        {/* <h1>Register Page</h1> */}
       <form onSubmit={handleSubmit}>
+      <h4 className="title">REGISTER FORM</h4>
   <div className="mb-3">
     
     <input type="text" value={name} onChange={(e) => setName(e.target.value)}
@@ -69,7 +74,8 @@ const Register = () => {
      className="form-control" id="exampleInputAddress" placeholder='Address' />
    
   </div> */}
-  <button type="submit" className="btn btn-primary">Submit</button>
+  <button type="submit" className="btn btn-primary">
+    Register</button>
 </form>
 
     </div>
