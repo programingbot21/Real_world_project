@@ -1,3 +1,4 @@
+// import { BiCycling } from "react-icons/bi";
 import userModel from "../models/userModel.js";
 import { comparePassword, hashPassword } from "./../helper/authHelper.js";
 import JWT  from 'jsonwebtoken';
@@ -114,9 +115,58 @@ export const loginController = async(req,res) =>{
     }
 };
 
+//forgotPasswordController
+
+export const forgotPasswordController = async (res,req) => {
+    try {
+        const {email, question, newPassword} = req.body
+        if(!email){
+            res.status(400).send({message: "Email is required"})
+        }
+        if(!question){
+            res.status(400).send({message: "Question is required"})
+        }
+        if(!newPassword){
+            res.status(400).send({message: "NewPass is required"})
+        }
+        //check
+
+        const user = await userModel.findOne({email,question})
+
+        //validation
+
+        if(!user){
+            return res.status(404).send({
+                success:false,
+                message: 'wrong Email or Answer'
+            })
+        }
+
+        const hashed = await hashPassword(newPassword);
+        await userModel.findByIdAndUpdate(user._id, { password: hashed});
+        res.status(200).send({
+            success:true,
+            message:"Paaword Reset Successfully",
+        });
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            success:false,
+            message:"Something went Wrong",
+            error
+        })
+    }
+};
+
 //test controller
 
 export const testController = (req, res) =>{
-    res.send('protected router')
+  try {
+      res.send('protected router')
+  } catch (error) {
+    console.log(error)
+    res.send({error})
+  }
 }
 

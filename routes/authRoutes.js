@@ -3,6 +3,7 @@ import{registerController ,
      loginController,
      
      testController,
+     forgotPasswordController,
 }from "../controllers/authController.js";
 
 import { isAmin, requireSingnIn } from "../middleware/authMiddleware.js";
@@ -20,6 +21,12 @@ router.post('/login', loginController )
 
 //test router
 
+router.post('/forget.password', forgotPasswordController);
+
 router.get('/test',requireSingnIn, isAmin, testController)
+
+router.get("/user-auth", requireSingnIn, (req,res) => {
+     res.status(200).send( {ok: true})
+})
 
 export default router;

@@ -72,7 +72,7 @@ const Log = () => {
               type="button"
               className="btn forgot-btn"
               onClick={() => {
-                navigate("/forgot-password");
+                navigate("/forget.password");
               }}
             >
               Forgot Password
