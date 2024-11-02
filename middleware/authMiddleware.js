@@ -17,7 +17,7 @@ export const requireSingnIn = async(req,res,next) => {
     }
 };
 
-export const isAmin = async (req,res,next) =>{
+export const isAdmin = async (req,res,next) =>{
     try{
         const user = await userModel.findById(req.user._id)
         if(user.role  !==1 ){
@@ -30,7 +30,7 @@ export const isAmin = async (req,res,next) =>{
         }
     }catch(error){
         console.log(error);
-        res.status(401).send({
+        res.status(402).send({
             success:false,
             error,
             message: "Error in admin middelware",

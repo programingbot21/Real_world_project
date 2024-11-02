@@ -21,7 +21,7 @@ const Register = () => {
     const handleSubmit = async(e) =>{
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:8000/api/v1/auth/register",
+            const res = await axios.post('/api/v1/auth/register',
             {name,
             email, 
             password, 
@@ -31,7 +31,7 @@ const Register = () => {
           });
             if(res && res.data.success){
                 toast.success( res.data &&  res.data.message)
-                navigate("/login");
+                navigate("/log");
             }else{
               toast.error(res.data.message)  
             }
@@ -78,7 +78,8 @@ const Register = () => {
   </div> */}
   <div className="mb-3">
     
-    <input type="text" value={question} className="form-control" onChange={(e) => setQuestion(e.target.value)} id="exampleInputPhone" placeholder='Secure password' />
+    <input type="text" value={question} className="form-control" onChange={(e) => setQuestion(e.target.value)} 
+    id="exampleInputQuestion" placeholder='Secure ' />
     
   </div>
   <button type="submit" className="btn btn-primary">

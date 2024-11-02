@@ -17,7 +17,7 @@ const Log = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8000/api/v1/auth/login", {
+      const res = await axios.post('/api/v1/auth/login', {
         email,
         password,
       });
@@ -35,7 +35,7 @@ const Log = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong");
+      toast.error("Something  went wrong");
     }
   };
   return (
@@ -72,7 +72,8 @@ const Log = () => {
               type="button"
               className="btn forgot-btn"
               onClick={() => {
-                navigate("/forget.password");
+                 navigate("/");                
+                  //  navigate("/forgotpassword");
               }}
             >
               Forgot Password
@@ -89,3 +90,4 @@ const Log = () => {
 };
 
 export default Log;
+// forget-password

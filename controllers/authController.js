@@ -4,7 +4,7 @@ import { comparePassword, hashPassword } from "./../helper/authHelper.js";
 import JWT  from 'jsonwebtoken';
 export const registerController = async(req, res) => {
     try{
-        const   {name,email,password,phone,address} = req.body
+        const   {name,email,password,phone,address,question} = req.body
 
         if(!name){
             return res.send({ message:'Name is required'})
@@ -17,6 +17,10 @@ export const registerController = async(req, res) => {
         }
         if(!phone){
             return res.send({ message:'Phone is required'})
+        }
+
+        if(!question){
+            return res.send({ message:'Message is required'})
         }
         // if(!address){
         //     return res.send({ message:'Address is required'})
@@ -42,7 +46,10 @@ export const registerController = async(req, res) => {
             email,
             phone,
             address,
-            password:hashedPassword }).save()
+            password: hashedPassword,
+            question,
+        
+        }).save();
 
         res.status(201).send({
             success:true,
@@ -99,7 +106,8 @@ export const loginController = async(req,res) =>{
                 name:user.name,
                 email:user.email,
                 phone:user.phone,
-                address:user.address,
+                // address:user.address,
+                role: user.role
 
             },
             token,
@@ -119,7 +127,7 @@ export const loginController = async(req,res) =>{
 
 export const forgotPasswordController = async (res,req) => {
     try {
-        const {email, question, newPassword} = req.body
+        const {email, question, newPassword} = req.body;
         if(!email){
             res.status(400).send({message: "Email is required"})
         }
@@ -131,7 +139,7 @@ export const forgotPasswordController = async (res,req) => {
         }
         //check
 
-        const user = await userModel.findOne({email,question})
+        const user = await userModel.findOne({email,question});
 
         //validation
 
@@ -139,7 +147,7 @@ export const forgotPasswordController = async (res,req) => {
             return res.status(404).send({
                 success:false,
                 message: 'wrong Email or Answer'
-            })
+            });
         }
 
         const hashed = await hashPassword(newPassword);
@@ -153,7 +161,7 @@ export const forgotPasswordController = async (res,req) => {
         console.log(error)
         res.status(500).send({
             success:false,
-            message:"Something went Wrong",
+            message:"Something tghfhg went Wrong",
             error
         })
     }
