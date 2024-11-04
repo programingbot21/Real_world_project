@@ -27,7 +27,7 @@
  .active:hover{
   border-bottom: 2px solid black;
   
-  transform: rotate(150deg);
+  /* transform: rotate(150deg); */
  
  }
 

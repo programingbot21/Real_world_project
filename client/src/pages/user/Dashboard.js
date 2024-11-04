@@ -1,11 +1,14 @@
 import React from 'react'
 import Layout from '../../componet/layout/layout'
+import UserMenu from '../../componet/layout/UserMenu'
+import { useAuth } from '../../context/auth'
 
 const Dashboard = () => {
+  const [auth] = useAuth();
   return (
-    <Layout title={"Dashboard - Ecommerce App"}>
-      <h1>Dashboard</h1>
-    {/* <div className="container-flui m-3 p-3 dashboard">
+    <Layout title={"Dashboard - Worker App"}>
+      {/* <h1>Dashboard</h1> */}
+    <div className="container-fluid m-3 p-3 dashboard">
       <div className="row">
         <div className="col-md-3">
           <UserMenu />
@@ -18,7 +21,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </div> */}
+    </div>
   </Layout>
   )
 }

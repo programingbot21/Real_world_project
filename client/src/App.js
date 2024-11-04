@@ -11,6 +11,11 @@ import Dashboard from "./pages/user/Dashboard"
 import PrivateRoute from "./componet/Routes/Private"
 import AdminRoute from "./componet/Routes/AdminRoute"
 import AdminDashboard from "./pages/Admin/AdminDashboard"
+import CreateCate from "./pages/Admin/CreateCate"
+import CreateProduct from "./pages/Admin/CreateProduct"
+import User from "./pages/Admin/User"
+import Oredr from "./pages/user/Oredr"
+import Profile from "./pages/user/Profile"
 
 //  import ForgotPass from "./pages/Auth/ForgotPass"
 
@@ -29,9 +34,14 @@ function App() {
     <Route path="/" element={<HomePage/>} />
     <Route path="/dashboard" element={<PrivateRoute/>} >
     <Route path="user" element={<Dashboard/>} />
+    <Route path="user/order" element={<Oredr/>} />
+    <Route path="user/profile" element={<Profile/>} />
     </Route>
     <Route path="/dashboard" element={<AdminRoute/>} >
     <Route path="admin" element={<AdminDashboard/>} />
+    <Route path="admin/create-category" element={<CreateCate/>} />
+    <Route path="admin/create-product" element={<CreateProduct/>} />
+    <Route path="admin/user" element={<User/>} />
     </Route>
     <Route path="/about" element={<About/>} />
     <Route path="/cont" element={<Cont/>} />
