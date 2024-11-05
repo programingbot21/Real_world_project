@@ -6,7 +6,7 @@ import{registerController ,
      forgotPasswordController,
 }from "../controllers/authController.js";
 
-import { isAdmin, requireSingnIn } from "../middleware/authMiddleware.js";
+import { isAdmin, requireSignIn } from "../middleware/authMiddleware.js";
 
 const router = express.Router()
 
@@ -23,13 +23,13 @@ router.post('/login', loginController )
 
  router.post('/forgotpassword', forgotPasswordController)
 
-router.get('/test',requireSingnIn, isAdmin, testController)
+router.get('/test',requireSignIn, isAdmin, testController)
 
-router.get("/user-auth", requireSingnIn, (req,res) => {
+router.get("/user-auth", requireSignIn, (req,res) => {
      res.status(200).send( {ok: true})
 })
 
-router.get("/admin-auth", requireSingnIn,isAdmin, (req,res) => {
+router.get("/admin-auth", requireSignIn,isAdmin, (req,res) => {
      res.status(200).send( {ok: true})
 })
 
