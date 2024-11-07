@@ -10,26 +10,26 @@ const productSchema = new mongoose.Schema({
         required:true
     },
     description:{
-        type:String,
-        required:true
+        type: String,
+        required: true,
     },
 
     price:{
-        type:Number,
-        required:true
+        type: Number,
+        required: true
     },
     category:{
         type:mongoose.ObjectId,
-        ref:'category',
-        required:true
+        ref: 'category',
+        required: true,
     },
     quantity:{
-        type:Number,
-        required:true
+        type: Number,
+        required:true,
     },
     photo:{
-        type:Buffer,
-        contentType:String
+        data:Buffer,
+        contentType: String,
     },
     shipping:{
         type:Boolean,
