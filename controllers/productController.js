@@ -4,7 +4,7 @@ import fs from 'fs'
 import slugify from "slugify";
 export const createProductController = async(req, res) => {
     try {
-        const {name,description,price,category,quantity,shipping } = req.fields;
+        const {name,slug,description,price,category,quantity,shipping } = req.fields;
         const {photo} = req.files
         switch(true){
             case !name:
@@ -48,5 +48,31 @@ export const createProductController = async(req, res) => {
           
         })
         
+    }
+};
+
+
+// get all Product
+
+export const getProductController = async( req ,res) => {
+    try {
+        const products = await productModel
+        .find({})
+        
+        .select("-photo")
+        .limit(12)
+        .sort({ createdAt: -1});
+        res.status(200).send({
+            success: true,
+            message: 'All product',
+            products
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success:false,
+            message:'Error is Getting Product ',
+            error
+        })
     }
 };

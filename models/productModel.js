@@ -2,11 +2,11 @@ import mongoose from "mongoose"
 
 const productSchema = new mongoose.Schema({
     name:{
-        type:String,
+        type: String,
         required:true
     },
     slug:{
-        type:String,
+        type: String,
         required:true
     },
     description:{
@@ -20,7 +20,7 @@ const productSchema = new mongoose.Schema({
     },
     category:{
         type:mongoose.ObjectId,
-        ref: 'category',
+        ref: 'Category',
         required: true,
     },
     quantity:{
@@ -35,6 +35,6 @@ const productSchema = new mongoose.Schema({
         type:Boolean,
     }
 
-},{timestamps:true})
+},{timestamps: true});
 
 export default mongoose.model('products', productSchema)
