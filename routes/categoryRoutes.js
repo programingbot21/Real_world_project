@@ -9,7 +9,7 @@ import { categoryController, createCategoryController,
 const router = express.Router()
 
 // create route
-router.post("/create-Cate", requireSignIn, isAdmin, createCategoryController);
+router.post('/create-Cate', requireSignIn, isAdmin, createCategoryController);
 
 
 // update route
