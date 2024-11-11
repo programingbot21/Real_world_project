@@ -8,7 +8,8 @@ const Dashboard = () => {
   return (
     <Layout title={"Dashboard - Worker App"}>
       {/* <h1>Dashboard</h1> */}
-      <div className="container-flui m-3 p-3 dashboard">
+      <div className="container-flui m-3 p-3 dashboard"
+       style={{height: "auto"}}>
         <div className="row">
           <div className="col-md-3">
           <UserMenu />

@@ -17,7 +17,7 @@ const Spinner = ({path = "log"}) => {
         });
         return () => clearInterval(interval);
     },[count, navigate , location , path]);
-  return (
+  return (   
     <>
     <div className="d-flex  flex-column justify-content-center align-items-center"
     style={{height: "100vh"}}>
