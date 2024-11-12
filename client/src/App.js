@@ -16,6 +16,7 @@ import CreateProduct from "./pages/Admin/CreateProduct"
 import User from "./pages/Admin/User"
 import Oredr from "./pages/user/Oredr"
 import Profile from "./pages/user/Profile"
+import Product from "./pages/Admin/Product"
 
 //  import ForgotPass from "./pages/Auth/ForgotPass"
 
@@ -41,6 +42,7 @@ function App() {
     <Route path="admin" element={<AdminDashboard/>} />
     <Route path="admin/create-category" element={<CreateCate/>} />
     <Route path="admin/create-product" element={<CreateProduct/>} />
+    <Route path="admin/product" element={<Product/>} />
     <Route path="admin/user" element={<User/>} />
     </Route>
     <Route path="/about" element={<About/>} />

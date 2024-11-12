@@ -4,10 +4,13 @@ import AdminMenu from '../../componet/layout/AdminMenu'
 import toast from 'react-hot-toast'
 import axios from 'axios'
 import { Select } from 'antd'
-const {Option} = Select
+import { useNavigate } from 'react-router-dom'
+const {Option} = Select;
 
 
 const CreateProduct = () => {
+  const navigate = useNavigate()
+ 
   const [categories, setCategories] = useState([])
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
@@ -15,6 +18,7 @@ const CreateProduct = () => {
   const [photo, setPhoto] = useState("")
   const [quantity, setQuantity] = useState("")
   const [shipping, setShipping] = useState("")
+  const [category, setCategory] = useState("")
 
 
   //get All Categary
@@ -36,12 +40,34 @@ const CreateProduct = () => {
     getAllCategory();
   },[]);
 
+  // create product Funtion
 
-
+  const handleCreate = async (e) => {
+    e.preventDefault()
+    try {
+      const productData = new FormData()
+      productData.append('name', name)
+      productData.append('description', description)
+      productData.append('price', price)
+      productData.append('photo', photo)
+      productData.append('quantity', quantity)
+      productData.append('category', category)
+      const {data} = axios.post('/api/v1/product/create-Product', productData)
+      if(data?.success){
+        toast.error(data?.message);
+      }else{
+        toast.error("Product Create SuccessFully")
+        navigate("/dashboard/admin/products")
+      }
+    }catch (error) {
+      console.log(error)
+      toast.error('someThing went song')
+    }
+  }
   return (
     <Layout title={"Dashboard - Create Product"}>
       
-       <div className='container-fluid m-3 p-3 t-300' >
+       <div className='container-fluid m-3 p-3 t-300 dashboard' >
        
       <div className='row ' >
             <div className='col-md-3'>
@@ -50,14 +76,15 @@ const CreateProduct = () => {
             <div className='col-md-9'>
             <h1>Create  Product</h1>
             <div className='m-1 w-75'>
-              <Select bordered = {false}
+              <Select 
+            bordered = {false}
               placeholder ='Select a category'
               size='large'
               showSearch
               className='form-select mb-3' 
-              onChange={(value) => {setCategories(value)}}>
+              onChange={(value) => {setCategory(value);}}>
                 {categories?.map(c => (
-                  <Option key={c._id} value={c.name}>{c.name}</Option>
+                  <Option key={c._id} value={c._id}>{c.name}</Option>
                 ))}
               </Select>
               <div className='mb-3'>
@@ -135,6 +162,11 @@ const CreateProduct = () => {
                   <Option value="0">No</Option>
                   <Option value="1">Yes</Option>
                 </Select>
+              </div>
+              <div className="mb-3">
+                <button className="btn btn-primary" onClick={handleCreate}>
+                  CREATE PRODUCT
+                </button>
               </div>
               </div>
                   
